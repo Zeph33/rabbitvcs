@@ -21,8 +21,8 @@ from __future__ import absolute_import
 # along with RabbitVCS;  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import six.moves._thread
-
+import thread
+import time
 import pygtk
 import gobject
 import gtk
@@ -61,6 +61,7 @@ class Diff(InterfaceNonView):
             self.path2 = path1
         
         self.dialog = None
+        self.dialogIsAlive = False
         
     def launch(self):
         
@@ -86,11 +87,11 @@ class Diff(InterfaceNonView):
         self.dialog.run()
     
     def stop_loading(self):
-        
         # Sometimes the launching will be too fast, and the dialog we're trusted with
         # cleaning up, may not even have been created!
-        while self.dialog == None:
+        while self.dialog == None or self.dialog.dialog == None:
             # Wait for dialog's creation.
+            time.sleep(0.1)
             pass
         
         self.dialog.close()
@@ -179,9 +180,13 @@ class SVNDiff(Diff):
                 self.svn.export, 
                 self.path1, 
                 dest1, 
-                self.revision1
+                self.revision1,
+                silent_fail=True
             )
             action.stop_loader()
+            if not os.path.isfile(dest1):
+                with open(dest1, 'a'):
+                    os.utime(dest1, None)
     
         if self.revision2.kind == "working":
             dest2 = self.path2
@@ -191,9 +196,13 @@ class SVNDiff(Diff):
                 self.svn.export, 
                 self.path2, 
                 dest2, 
-                self.revision2
+                self.revision2,
+                silent_fail=True
             )
             action.stop_loader()
+            if not os.path.isfile(dest2):
+                with open(dest2, 'a'):
+                    os.utime(dest2, None)
     
         rabbitvcs.util.helper.launch_diff_tool(dest1, dest2)
 
