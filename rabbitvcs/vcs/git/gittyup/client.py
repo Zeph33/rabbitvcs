@@ -27,11 +27,19 @@ from . import util
 from .objects import *
 from .command import GittyupCommand
 
+<<<<<<< HEAD
 import six.moves.tkinter
 import six.moves.tkinter_messagebox
 import six
+=======
+
+import Tkinter
+import tkMessageBox
+>>>>>>> bd752fc55dc29d1f2469299fee59d4d0a9d44447
 
 ENCODING = "UTF-8"
+
+
 
 def callback_notify_null(val):
     pass
@@ -1355,7 +1363,9 @@ class GittyupClient:
             if components:
                 status = components.group(1)
                 strip_status = status.strip()
-                path = components.group(2)
+                path = components.group(2).decode("string_escape").decode("UTF-8")
+                if path[0] == '"' and path[-1] == '"':
+                    path = path[1:-1]
                
                 if status == " D":
                     statuses.append(MissingStatus(path))
@@ -1439,10 +1449,14 @@ class GittyupClient:
                 if untracked_path in d:
                     d_status = UntrackedStatus(d)
                     break
+            
+            dirPattern = "/%s/" % d
+            if len(d) == 0:
+                dirPattern = "/"
 
             # Check if directory includes modified files
             for file in modified_files:
-                if file.startswith(d):
+                if ("/%s" % file).startswith(dirPattern): # fix, when file startwith same prefix as directory, fix status for root repo path ""
                     d_status = ModifiedStatus(d)
                     break
 
@@ -1452,7 +1466,6 @@ class GittyupClient:
                     d_status = IgnoredStatus(d)
                     break
             statuses.append(d_status)
-
 
         return statuses
 
@@ -1655,8 +1668,10 @@ class GittyupClient:
                     changed_file = {
                         "additions": file_line[0],
                         "removals": file_line[1],
-                        "path": file_line[2]
+                        "path": file_line[2].decode('string_escape').decode("UTF-8")
                     }
+                    if changed_file['path'][0] == '"' and changed_file['path'][-1] == '"':
+                        changed_file['path'] = changed_file['path'][1:-1]
                     revision["changed_paths"].append(changed_file)
 
         if revision:
