@@ -27,15 +27,9 @@ from . import util
 from .objects import *
 from .command import GittyupCommand
 
-<<<<<<< HEAD
-import six.moves.tkinter
-import six.moves.tkinter_messagebox
-import six
-=======
 
 import Tkinter
 import tkMessageBox
->>>>>>> bd752fc55dc29d1f2469299fee59d4d0a9d44447
 
 ENCODING = "UTF-8"
 
