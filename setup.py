@@ -159,12 +159,12 @@ dist = setup(
 #
 
 # Make sure the icon cache is deleted and recreated
-if sys.argv[1] == "install":
+# if sys.argv[1] == "install":
 
-    if os.uname()[0] != 'Darwin':
-        print("Running gtk-update-icon-cache-3.0")
+#     if os.uname()[0] != 'Darwin':
+#         print("Running gtk-update-icon-cache-3.0")
         
-        subprocess.Popen(
-            ["gtk-update-icon-cache-3.0", icon_theme_directory], 
-            stdout=subprocess.PIPE
-        ).communicate()[0]
+#         subprocess.Popen(
+#             ["gtk-update-icon-cache-3.0", icon_theme_directory], 
+#             stdout=subprocess.PIPE
+#         ).communicate()[0]
