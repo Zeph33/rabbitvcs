@@ -26,7 +26,7 @@ from __future__ import absolute_import
 # Python translation from wrapLabel.{cc|h} by Gian Mario Tagliaretti
 
 import gtk
-import gobject
+from gi.repository import GObject as gobject
 import pango
 
 

@@ -25,7 +25,7 @@ import os.path
 import urllib
 
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 
 from rabbitvcs.ui import InterfaceView

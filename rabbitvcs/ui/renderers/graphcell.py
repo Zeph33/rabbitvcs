@@ -16,7 +16,7 @@ __author__    = "Scott James Remnant <scott@ubuntu.com>"
 import math
 
 import gtk
-import gobject
+from gi.repository import GObject as gobject
 import pango
 import cairo
 

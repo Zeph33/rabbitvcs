@@ -62,7 +62,7 @@ import datetime
 import gnomevfs
 import nautilus
 import pysvn
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 
 from rabbitvcs.vcs import VCS

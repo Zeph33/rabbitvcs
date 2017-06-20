@@ -25,7 +25,7 @@ from gettext import gettext as _
 import os.path
 
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 import pango
 

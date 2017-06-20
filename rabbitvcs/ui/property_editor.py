@@ -34,7 +34,7 @@ from __future__ import print_function
 import os.path
 
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 
 from rabbitvcs.ui import InterfaceView

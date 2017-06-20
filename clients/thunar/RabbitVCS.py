@@ -35,7 +35,7 @@ import threading
 import urllib
 import thunarx
 import pysvn
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 
 from rabbitvcs.vcs.svn import SVN

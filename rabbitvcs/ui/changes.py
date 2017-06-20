@@ -23,7 +23,7 @@ from __future__ import absolute_import
 
 import os.path
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 
 from rabbitvcs.ui import InterfaceView

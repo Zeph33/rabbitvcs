@@ -35,7 +35,7 @@ __version__ = "0.13.beta1"
 import copy
 import glob
 import gnomevfs
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 import nautilus
 import os

@@ -24,7 +24,7 @@ from __future__ import absolute_import
 import thread
 import time
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 import os
 from shutil import rmtree

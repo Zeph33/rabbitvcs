@@ -25,7 +25,7 @@ import six.moves._thread
 
 import os
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 
 from rabbitvcs.ui import InterfaceView

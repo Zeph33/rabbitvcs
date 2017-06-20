@@ -25,7 +25,7 @@ from __future__ import print_function
 import os
 
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 import pango
 

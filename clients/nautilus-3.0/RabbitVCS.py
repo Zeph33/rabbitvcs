@@ -63,6 +63,8 @@ import os.path
 from os.path import isdir, isfile, realpath, basename
 import datetime
 
+import gi
+gi.require_version('Nautilus', '3.0')
 from gi.repository import Nautilus, GObject, Gtk, GdkPixbuf
 
 import pysvn
@@ -76,7 +78,7 @@ from rabbitvcs.util.helper import pretty_timedelta
 
 from rabbitvcs.util.decorators import timeit, disable
 
-from rabbitvcs.util.contextmenu import MenuBuilder, MainContextMenu, SEPARATOR, ContextMenuConditions
+from rabbitvcs.util.contextmenu import MenuBuilder, MainContextMenu, ContextMenuConditions
 
 import rabbitvcs.ui
 import rabbitvcs.ui.property_page

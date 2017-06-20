@@ -27,7 +27,7 @@ from datetime import datetime
 
 import os.path
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 import cgi
 

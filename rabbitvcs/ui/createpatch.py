@@ -25,7 +25,7 @@ import os
 import six.moves._thread
 
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 import os
 import tempfile

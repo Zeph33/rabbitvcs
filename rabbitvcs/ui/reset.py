@@ -24,7 +24,7 @@ from __future__ import absolute_import
 import os
 
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 import pango
 

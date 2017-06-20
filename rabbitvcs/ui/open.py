@@ -25,7 +25,7 @@ from os import getcwd
 import os.path
 
 import pygtk
-import gobject
+from gi.repository import GObject as gobject
 import gtk
 
 from rabbitvcs.ui import InterfaceNonView
